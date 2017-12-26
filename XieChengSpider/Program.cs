@@ -7,7 +7,7 @@ namespace XieChengSpider
         static void Main(string[] args)
         {
             var cityUrl = "http://hotels.ctrip.com/citylist";
-            var kiddSpider = new KiddSpider();
+            var kiddSpider = new KiddCrawler();
             kiddSpider.OnStart += ((s, e) =>
             {
                 Console.WriteLine("爬虫开始抓取地址：" + e.Uri.ToString());
