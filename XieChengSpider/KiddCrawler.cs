@@ -49,7 +49,7 @@ namespace XieChengSpider
                     var threadId = Thread.CurrentThread.ManagedThreadId;
                     var milliseconds = watch.ElapsedMilliseconds;
                     pageSource = result.Html;
-                    if (this.OnCompleted != null) OnCompleted(this, new OnCompletedEventArgs(uri, threadId, pageSource, milliseconds));                   
+                    if (this.OnCompleted != null) OnCompleted(this, new OnCompletedEventArgs(uri, threadId, pageSource, milliseconds));
                 }
                 catch (Exception e)
                 {
