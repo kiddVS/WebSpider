@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Text;
 
 namespace XieChengSpider
 {
@@ -6,6 +8,7 @@ namespace XieChengSpider
     {
         static void Main(string[] args)
         {
+            Console.BufferHeight = 1000;
             var cityUrl = "http://hotels.ctrip.com/citylist";
             var kiddSpider = new KiddCrawler();
             kiddSpider.OnStart += ((s, e) =>
@@ -19,7 +22,13 @@ namespace XieChengSpider
             kiddSpider.OnCompleted += (s, e) =>
             {
                 Console.WriteLine(e.PageSource);
-                Console.WriteLine("==================================");
+                //File.Create("E:/XieChen.txt");
+                using (StreamWriter sw = new StreamWriter(@"E:/XieChen.txt"))
+                {
+                    sw.Write(e.PageSource);
+                    sw.Flush();
+                }
+                    Console.WriteLine("==================================");
                 Console.WriteLine("爬虫抓取完毕！");
                 Console.WriteLine("耗时：" + e.Milliseconds + "秒");
                 Console.WriteLine("线程：" + e.ThreadId);
